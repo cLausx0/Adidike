@@ -70,7 +70,7 @@ Caused by: java.lang.ClassNotFoundException: Libs.javafx-sdk-11.0.2.lib
       "request": "launch",
       "mainClass": "App",
       "projectName": "Nome do projeto",
-      "vmArgs": "--module-path \"L:/Java/Java Libs/javafx-sdk-11.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Java/Java Libs/javafx-sdk-11.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
     }
   ]
 }
