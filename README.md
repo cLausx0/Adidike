@@ -3,7 +3,7 @@
 Bem vindo ao projeto `Adidike`. Segue aqui um passo a passo inicial para você conseguir rodar nossa aplicação sem maiores problemas.
 
 Primeiramente, para prosseguir com as etapas restantes, entende-se que você já tem baixado na sua máquina o framework JavaFX e o JDK (Java Development Kit). Se esse não for o caso, instale-os pelos links a seguir antes de prosseguir com o passo a passo:
-* [JavaFX]https://gluonhq.com/products/javafx/
+* JavaF[Xhttps://gluonhq.com/products/javafx/]
 * [JDK]https://www.oracle.com/br/java/technologies/downloads/#java11
 
 ## Arquivo de configuração `launch.json`
