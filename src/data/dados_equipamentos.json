@@ -1,0 +1,12 @@
+[
+  {
+    "esporteRelacionado": "123",
+    "itemEquipamento": "123",
+    "id": 132,
+    "nome": "123",
+    "preco": 123.0,
+    "estoque": 123,
+    "estoqueMIN": 123123,
+    "tipoProduto": "Equipamento"
+  }
+]
