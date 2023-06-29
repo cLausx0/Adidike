@@ -24,5 +24,6 @@ public class App extends Application {
         primaryStage.setResizable(false);
         primaryStage.setScene(tela);
         primaryStage.show();
+
     }
 }

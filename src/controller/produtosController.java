@@ -3,14 +3,9 @@ package controller;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -20,7 +15,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import model.ProdutoAcessorio;
 import model.ProdutoCalcado;
 import model.ProdutoEquipamento;
@@ -383,7 +377,10 @@ public class produtosController {
     //#endregion
 
     //#region Inicialização de todas as tabelas
+
+    
     public void initialize() {
+
 
         //#region tabela Acessorios
         idAcessorio.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
@@ -447,11 +444,135 @@ public class produtosController {
         saborSuplemento.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSaborSuplemento()));
         //#endregion
 
-        tabelaAcessorio.setItems(FXCollections.observableArrayList());
-        tabelaCalcado.setItems(FXCollections.observableArrayList());
-        tabelaEquipamento.setItems(FXCollections.observableArrayList());
-        tabelaRoupa.setItems(FXCollections.observableArrayList());
-        tabelaSuplemento.setItems(FXCollections.observableArrayList());
+        // tabelaAcessorio.setItems(FXCollections.observableArrayList());
+        // tabelaCalcado.setItems(FXCollections.observableArrayList());
+        // tabelaEquipamento.setItems(FXCollections.observableArrayList());
+        // tabelaRoupa.setItems(FXCollections.observableArrayList());
+        // tabelaSuplemento.setItems(FXCollections.observableArrayList());
+
+        //#region Colocar dados da linha selecionada nos campos de texto
+
+        tabelaAcessorio.getSelectionModel().selectedItemProperty().addListener((obs, antigoValor, novoValor) -> {
+            if (novoValor != null) {
+                textID.setText(String.valueOf(novoValor.getId()));
+                textNome.setText(novoValor.getNome());
+                textPreco.setText(String.valueOf(novoValor.getPreco()));
+                textEstoque.setText(String.valueOf(novoValor.getEstoque()));
+                textMinEstoque.setText(String.valueOf(novoValor.getEstoqueMIN()));
+                textCategoriaAces.setText(novoValor.getCategoriaAcessorio());
+                textMaterialAces.setText(novoValor.getProducaoAcessorio());
+            }
+            else {
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textCategoriaAces.clear();
+                textMaterialAces.clear();
+            }
+        });
+
+        tabelaCalcado.getSelectionModel().selectedItemProperty().addListener((obs, antigoValor, novoValor) -> {
+            if (novoValor != null) {
+                textID.setText(String.valueOf(novoValor.getId()));
+                textNome.setText(novoValor.getNome());
+                textPreco.setText(String.valueOf(novoValor.getPreco()));
+                textEstoque.setText(String.valueOf(novoValor.getEstoque()));
+                textMinEstoque.setText(String.valueOf(novoValor.getEstoqueMIN()));
+                textTamanhoCalc.setText(String.valueOf(novoValor.getTamanho()));
+                textCorCalc.setText(novoValor.getCor());
+                textMarcaCalc.setText(novoValor.getMarca());
+                textGeneroCalc.setText(novoValor.getGenero());
+                textEsporteCalc.setText(novoValor.getEsporteRelacionado());
+            }
+            else {
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textTamanhoCalc.clear();
+                textCorCalc.clear();
+                textMarcaCalc.clear();
+                textGeneroCalc.clear();
+                textEsporteCalc.clear();
+            }
+        });
+
+        tabelaEquipamento.getSelectionModel().selectedItemProperty().addListener((obs, antigoValor, novoValor) -> {
+            if (novoValor != null) {
+                textID.setText(String.valueOf(novoValor.getId()));
+                textNome.setText(novoValor.getNome());
+                textPreco.setText(String.valueOf(novoValor.getPreco()));
+                textEstoque.setText(String.valueOf(novoValor.getEstoque()));
+                textMinEstoque.setText(String.valueOf(novoValor.getEstoqueMIN()));
+                textEsporteEquip.setText(novoValor.getEsporteRelacionado());
+                textItemEquip.setText(novoValor.getItemEquipamento());
+            }
+            else {
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textEsporteEquip.clear();
+                textItemEquip.clear();
+            }
+        });
+
+        tabelaRoupa.getSelectionModel().selectedItemProperty().addListener((obs, antigoValor, novoValor) -> {
+            if (novoValor != null) {
+                textID.setText(String.valueOf(novoValor.getId()));
+                textNome.setText(novoValor.getNome());
+                textPreco.setText(String.valueOf(novoValor.getPreco()));
+                textEstoque.setText(String.valueOf(novoValor.getEstoque()));
+                textMinEstoque.setText(String.valueOf(novoValor.getEstoqueMIN()));
+                textTamanhoRoupa.setText(novoValor.getTamanho());
+                textCorRoupa.setText(novoValor.getCor());
+                textMarcaRoupa.setText(novoValor.getMarca());
+                textMaterialRoupa.setText(novoValor.getMaterial());
+            }
+            else {
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textTamanhoRoupa.clear();
+                textCorRoupa.clear();
+                textMarcaRoupa.clear();
+                textMaterialRoupa.clear();
+            }
+        });
+
+        tabelaSuplemento.getSelectionModel().selectedItemProperty().addListener((obs, antigoValor, novoValor) -> {
+            if (novoValor != null) {
+                textID.setText(String.valueOf(novoValor.getId()));
+                textNome.setText(novoValor.getNome());
+                textPreco.setText(String.valueOf(novoValor.getPreco()));
+                textEstoque.setText(String.valueOf(novoValor.getEstoque()));
+                textMinEstoque.setText(String.valueOf(novoValor.getEstoqueMIN()));
+                textConsistenciaSupl.setText(novoValor.getConsistenciaSuplemento());
+                textCaloriasSupl.setText(String.valueOf(novoValor.getCaloriasSuplemento()));
+                textGramasSupl.setText(String.valueOf(novoValor.getGramasSuplemento()));
+                textSaborSupl.setText(novoValor.getSaborSuplemento());
+            }
+            else {
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textConsistenciaSupl.clear();
+                textCaloriasSupl.clear();
+                textGramasSupl.clear();
+                textSaborSupl.clear();
+            }
+        });
+        
+        //#endregion
+
     }
     //#endregion
 
@@ -467,7 +588,7 @@ public class produtosController {
 
     @FXML
     void addTabelaProduto(ActionEvent event) {
-        
+
         if (menuTipoProduto.getText() == "Acessório") {
             for (int i = 0; i < tabelaAcessorio.getItems().size(); i++){
                 if (Integer.parseInt(textID.getText()) == tabelaAcessorio.getItems().get(i).getId()) {
@@ -491,6 +612,13 @@ public class produtosController {
             acessorio.setProducaoAcessorio(textMaterialAces.getText());
 
             tabelaAcessorio.getItems().add(acessorio);
+            tabelaAcessorio.refresh();
+
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText("Produto cadastrado com sucesso");
+            alert.setContentText("O produto foi cadastrado com sucesso");
+            alert.showAndWait();
 
         } 
         else if (menuTipoProduto.getText() == "Calçado") {
@@ -520,6 +648,12 @@ public class produtosController {
 
             tabelaCalcado.getItems().add(calcado);
 
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText("Produto cadastrado com sucesso");
+            alert.setContentText("O produto foi cadastrado com sucesso");
+            alert.showAndWait();
+
         } 
         else if (menuTipoProduto.getText() == "Equipamento") {
             for (int i = 0; i < tabelaEquipamento.getItems().size(); i++){
@@ -544,6 +678,12 @@ public class produtosController {
             equipamento.setItemEquipamento(textItemEquip.getText());
 
             tabelaEquipamento.getItems().add(equipamento);
+
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText("Produto cadastrado com sucesso");
+            alert.setContentText("O produto foi cadastrado com sucesso");
+            alert.showAndWait();
             
         } 
         else if (menuTipoProduto.getText() == "Roupa") {
@@ -572,6 +712,12 @@ public class produtosController {
 
             tabelaRoupa.getItems().add(roupa);
 
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText("Produto cadastrado com sucesso");
+            alert.setContentText("O produto foi cadastrado com sucesso");
+            alert.showAndWait();
+
         } 
         else if (menuTipoProduto.getText() == "Suplemento") {
             for (int i = 0; i < tabelaSuplemento.getItems().size(); i++){
@@ -599,41 +745,316 @@ public class produtosController {
 
             tabelaSuplemento.getItems().add(suplemento);
 
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText("Produto cadastrado com sucesso");
+            alert.setContentText("O produto foi cadastrado com sucesso");
+            alert.showAndWait();
+
         }
 
-        textID.setText("");
-        textNome.setText("");
-        textPreco.setText("");
-        textEstoque.setText("");
-        textMinEstoque.setText("");
-        textCategoriaAces.setText("");
-        textMaterialAces.setText("");
-        textTamanhoCalc.setText("");
-        textCorCalc.setText("");
-        textMarcaCalc.setText("");
-        textGeneroCalc.setText("");
-        textEsporteCalc.setText("");
-        textEsporteEquip.setText("");
-        textItemEquip.setText("");
-        textTamanhoRoupa.setText("");
-        textCorRoupa.setText("");
-        textMarcaRoupa.setText("");
-        textMaterialRoupa.setText("");
-        textConsistenciaSupl.setText("");
-        textCaloriasSupl.setText("");
-        textGramasSupl.setText("");
-        textSaborSupl.setText("");
+        textID.clear();
+        textNome.clear();
+        textPreco.clear();
+        textEstoque.clear();
+        textMinEstoque.clear();
+        textCategoriaAces.clear();
+        textMaterialAces.clear();
+        textTamanhoCalc.clear();
+        textCorCalc.clear();
+        textMarcaCalc.clear();
+        textGeneroCalc.clear();
+        textEsporteCalc.clear();
+        textEsporteEquip.clear();
+        textItemEquip.clear();
+        textTamanhoRoupa.clear();
+        textCorRoupa.clear();
+        textMarcaRoupa.clear();
+        textMaterialRoupa.clear();
+        textConsistenciaSupl.clear();
+        textCaloriasSupl.clear();
+        textGramasSupl.clear();
+        textSaborSupl.clear();
 
+        textID.requestFocus();
     }
 
     @FXML
     void deletarCampoProduto(ActionEvent event) {
+        if (menuTipoProduto.getText() == "Acessório") {
+            ProdutoAcessorio itemSelecionado = tabelaAcessorio.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                tabelaAcessorio.getItems().remove(itemSelecionado);
+                tabelaAcessorio.refresh();
 
+                //alerta de excluiu com sucesso
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Sucesso");
+                alert.setHeaderText("Produto excluído com sucesso");
+                alert.setContentText("O produto foi excluído com sucesso");
+                alert.showAndWait();
+
+            } 
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        } 
+        else if (menuTipoProduto.getText() == "Calçado") {
+            ProdutoCalcado itemSelecionado = tabelaCalcado.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                tabelaCalcado.getItems().remove(itemSelecionado);
+            } 
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        } 
+        else if (menuTipoProduto.getText() == "Equipamento") {
+            ProdutoEquipamento itemSelecionado = tabelaEquipamento.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                tabelaEquipamento.getItems().remove(itemSelecionado);
+            } 
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        } 
+        else if (menuTipoProduto.getText() == "Roupa") {
+            ProdutoRoupa itemSelecionado = tabelaRoupa.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                tabelaRoupa.getItems().remove(itemSelecionado);
+            } 
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        } 
+        else if (menuTipoProduto.getText() == "Suplemento") {
+            ProdutoSuplemento itemSelecionado = tabelaSuplemento.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                tabelaSuplemento.getItems().remove(itemSelecionado);
+            } 
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        }
+        textID.requestFocus();
     }
 
     @FXML
     void editarCampoProduto(ActionEvent event) {
+        if (menuTipoProduto.getText() == "Acessório") {
+            ProdutoAcessorio itemSelecionado = tabelaAcessorio.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                itemSelecionado.setId(Integer.parseInt(textID.getText()));
+                itemSelecionado.setNome(textNome.getText());
+                itemSelecionado.setPreco(Double.parseDouble(textPreco.getText()));
+                itemSelecionado.setEstoque(Integer.parseInt(textEstoque.getText()));
+                itemSelecionado.setEstoqueMIN(Integer.parseInt(textMinEstoque.getText()));
+                itemSelecionado.setTipoProduto(menuTipoProduto.getText());
+                itemSelecionado.setCategoriaAcessorio(textCategoriaAces.getText());
+                itemSelecionado.setProducaoAcessorio(textMaterialAces.getText());
 
+                tabelaAcessorio.refresh();
+
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textCategoriaAces.clear();
+                textMaterialAces.clear();
+
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Sucesso");
+                alert.setHeaderText("Produto editado com sucesso");
+                alert.setContentText("O produto foi editado com sucesso");
+                alert.showAndWait();
+            }
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        }
+        else if (menuTipoProduto.getText() == "Calçado") {
+            ProdutoCalcado itemSelecionado = tabelaCalcado.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                itemSelecionado.setId(Integer.parseInt(textID.getText()));
+                itemSelecionado.setNome(textNome.getText());
+                itemSelecionado.setPreco(Double.parseDouble(textPreco.getText()));
+                itemSelecionado.setEstoque(Integer.parseInt(textEstoque.getText()));
+                itemSelecionado.setEstoqueMIN(Integer.parseInt(textMinEstoque.getText()));
+                itemSelecionado.setTipoProduto(menuTipoProduto.getText());
+                itemSelecionado.setTamanho(Integer.parseInt(textTamanhoCalc.getText()));
+                itemSelecionado.setCor(textCorCalc.getText());
+                itemSelecionado.setMarca(textMarcaCalc.getText());
+                itemSelecionado.setGenero(textGeneroCalc.getText());
+                itemSelecionado.setEsporteRelacionado(textEsporteCalc.getText());
+
+                tabelaCalcado.refresh();
+
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textTamanhoCalc.clear();
+                textCorCalc.clear();
+                textMarcaCalc.clear();
+                textGeneroCalc.clear();
+                textEsporteCalc.clear();
+
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Sucesso");
+                alert.setHeaderText("Produto editado com sucesso");
+                alert.setContentText("O produto foi editado com sucesso");
+                alert.showAndWait();
+            }
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        }
+        else if (menuTipoProduto.getText() == "Equipamento") {
+            ProdutoEquipamento itemSelecionado = tabelaEquipamento.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                itemSelecionado.setId(Integer.parseInt(textID.getText()));
+                itemSelecionado.setNome(textNome.getText());
+                itemSelecionado.setPreco(Double.parseDouble(textPreco.getText()));
+                itemSelecionado.setEstoque(Integer.parseInt(textEstoque.getText()));
+                itemSelecionado.setEstoqueMIN(Integer.parseInt(textMinEstoque.getText()));
+                itemSelecionado.setTipoProduto(menuTipoProduto.getText());
+                itemSelecionado.setEsporteRelacionado(textEsporteEquip.getText());
+                itemSelecionado.setItemEquipamento(textItemEquip.getText());
+
+                tabelaEquipamento.refresh();
+
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textEsporteEquip.clear();
+                textItemEquip.clear();
+
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Sucesso");
+                alert.setHeaderText("Produto editado com sucesso");
+                alert.setContentText("O produto foi editado com sucesso");
+                alert.showAndWait();
+            }
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        }
+        else if (menuTipoProduto.getText() == "Roupa"){
+            ProdutoRoupa itemSelecionado = tabelaRoupa.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                itemSelecionado.setId(Integer.parseInt(textID.getText()));
+                itemSelecionado.setNome(textNome.getText());
+                itemSelecionado.setPreco(Double.parseDouble(textPreco.getText()));
+                itemSelecionado.setEstoque(Integer.parseInt(textEstoque.getText()));
+                itemSelecionado.setEstoqueMIN(Integer.parseInt(textMinEstoque.getText()));
+                itemSelecionado.setTipoProduto(menuTipoProduto.getText());
+                itemSelecionado.setTamanho(textTamanhoRoupa.getText());
+                itemSelecionado.setCor(textCorRoupa.getText());
+                itemSelecionado.setMarca(textMarcaRoupa.getText());
+                itemSelecionado.setMaterial(textMaterialRoupa.getText());
+
+                tabelaRoupa.refresh();
+
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textTamanhoRoupa.clear();
+                textCorRoupa.clear();
+                textMarcaRoupa.clear();
+                textMaterialRoupa.clear();
+
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Sucesso");
+                alert.setHeaderText("Produto editado com sucesso");
+                alert.setContentText("O produto foi editado com sucesso");
+                alert.showAndWait();
+            }
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        }
+        else if (menuTipoProduto.getText() == "Suplemento") {
+            ProdutoSuplemento itemSelecionado = tabelaSuplemento.getSelectionModel().getSelectedItem();
+            if (itemSelecionado != null) {
+                itemSelecionado.setId(Integer.parseInt(textID.getText()));
+                itemSelecionado.setNome(textNome.getText());
+                itemSelecionado.setPreco(Double.parseDouble(textPreco.getText()));
+                itemSelecionado.setEstoque(Integer.parseInt(textEstoque.getText()));
+                itemSelecionado.setEstoqueMIN(Integer.parseInt(textMinEstoque.getText()));
+                itemSelecionado.setTipoProduto(menuTipoProduto.getText());
+                itemSelecionado.setConsistenciaSuplemento(textConsistenciaSupl.getText());
+                itemSelecionado.setCaloriasSuplemento(Integer.parseInt(textCaloriasSupl.getText()));
+                itemSelecionado.setGramasSuplemento(Double.parseDouble(textGramasSupl.getText()));
+                itemSelecionado.setSaborSuplemento(textSaborSupl.getText());
+
+                tabelaSuplemento.refresh();
+
+                textID.clear();
+                textNome.clear();
+                textPreco.clear();
+                textEstoque.clear();
+                textMinEstoque.clear();
+                textConsistenciaSupl.clear();
+                textCaloriasSupl.clear();
+                textGramasSupl.clear();
+                textSaborSupl.clear();
+
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Sucesso");
+                alert.setHeaderText("Produto editado com sucesso");
+                alert.setContentText("O produto foi editado com sucesso");
+                alert.showAndWait();
+            }
+            else {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Nenhum item selecionado");
+                alert.setContentText("Por favor, selecione um item da tabela");
+                alert.showAndWait();
+            }
+        }
+        textID.requestFocus();
     }
     //#endregion
 
@@ -648,30 +1069,17 @@ public class produtosController {
     private Tab telaVendas;
 
     @FXML
-    void mudarTelaClientes(ActionEvent event) throws Exception {
-        // FXMLLoader loader = new FXMLLoader((getClass().getResource("../view/telaRelatorios.fxml")));
-        // Parent root = loader.load();
-        
-        // // relatoriosController controladorRelatorios = loader.getController();
-
-        // Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        // Stage novaJanela = new Stage();
-        // novaJanela.setScene(new Scene(root));
-
-        // novaJanela.show();
-        // stageAtual.close();
-
-        System.out.println("to chegando aqui");
+    void mudarTelaClientes(ActionEvent event) {
+        System.out.println("aaaa");
     }
 
     @FXML
-    void mudarTelaRelatorios(ActionEvent event) throws Exception {
-
+    void mudarTelaRelatorios(ActionEvent event) {
+    
     }
 
     @FXML
-    void mudarTelaVendas(ActionEvent event) throws Exception {
+    void mudarTelaVendas(ActionEvent event) {
 
     }
 

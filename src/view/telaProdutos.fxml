@@ -318,7 +318,11 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab fx:id="telaClientes" onSelectionChanged="#mudarTelaClientes" text="Clientes" />
+    <Tab fx:id="telaClientes" onSelectionChanged="#mudarTelaClientes" text="Clientes">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+         </content>
+    </Tab>
       <Tab fx:id="telaVendas" onSelectionChanged="#mudarTelaVendas" text="Vendas" />
       <Tab fx:id="telaRelatorios" onSelectionChanged="#mudarTelaRelatorios" text="Relatórios" />
   </tabs>
