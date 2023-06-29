@@ -1,0 +1,28 @@
+[
+  {
+    "tamanho": 123,
+    "cor": "123",
+    "marca": "123",
+    "genero": "123",
+    "esporteRelacionado": "12",
+    "id": 1234,
+    "nome": "2",
+    "preco": 123.0,
+    "estoque": 123,
+    "estoqueMIN": 12,
+    "tipoProduto": "Calçado"
+  },
+  {
+    "tamanho": 123,
+    "cor": "123",
+    "marca": "32",
+    "genero": "123",
+    "esporteRelacionado": "32",
+    "id": 132,
+    "nome": "123",
+    "preco": 123.0,
+    "estoque": 123,
+    "estoqueMIN": 123123,
+    "tipoProduto": "Calçado"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "tamanho": "123",
+    "cor": "123",
+    "marca": "123",
+    "material": "123",
+    "id": 1232,
+    "nome": "123",
+    "preco": 123.0,
+    "estoque": 123,
+    "estoqueMIN": 123,
+    "tipoProduto": "Roupa"
+  }
+]

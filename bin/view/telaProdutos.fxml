@@ -48,7 +48,7 @@
 
 <TabPane blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.produtosController">
   <tabs>
-    <Tab text="Produtos">
+    <Tab fx:id="tabProdutos" text="Produtos">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -318,12 +318,8 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab fx:id="telaClientes" onSelectionChanged="#mudarTelaClientes" text="Clientes">
-         <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-         </content>
-    </Tab>
-      <Tab fx:id="telaVendas" onSelectionChanged="#mudarTelaVendas" text="Vendas" />
-      <Tab fx:id="telaRelatorios" onSelectionChanged="#mudarTelaRelatorios" text="Relatórios" />
+    <Tab fx:id="tabClientes" text="Clientes" />
+      <Tab fx:id="tabVendas" text="Vendas" />
+      <Tab fx:id="tabRelatorios" text="Relatórios" />
   </tabs>
 </TabPane>

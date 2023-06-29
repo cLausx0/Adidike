@@ -1,0 +1,14 @@
+[
+  {
+    "consistenciaSuplemento": "123",
+    "caloriasSuplemento": 123,
+    "gramasSuplemento": 123.0,
+    "saborSuplemento": "123",
+    "id": 123,
+    "nome": "123",
+    "preco": 132.0,
+    "estoque": 123,
+    "estoqueMIN": 123,
+    "tipoProduto": "Suplemento"
+  }
+]

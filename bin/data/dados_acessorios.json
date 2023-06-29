@@ -1,0 +1,12 @@
+[
+  {
+    "categoriaAcessorio": "123",
+    "producaoAcessorio": "123",
+    "id": 1232,
+    "nome": "123",
+    "preco": 123.0,
+    "estoque": 123,
+    "estoqueMIN": 123,
+    "tipoProduto": "Acessório"
+  }
+]
