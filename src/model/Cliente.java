@@ -4,8 +4,9 @@ public class Cliente {
     private int id;
     private String nome;
     private String email;
-    private int telefone;
+    private String telefone;
     private String endereco;
+    private int qtdCompras;
     
     public int getId() {
         return id;
@@ -25,10 +26,10 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
     public String getEndereco() {
@@ -36,6 +37,14 @@ public class Cliente {
     }
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public int getQtdCompras() {
+        return qtdCompras;
+    }
+
+    public void setQtdCompras(int qtdCompras) {
+        this.qtdCompras = qtdCompras;
     }
 
 }

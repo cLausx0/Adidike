@@ -1,12 +1,52 @@
 [
   {
-    "esporteRelacionado": "123",
-    "itemEquipamento": "123",
-    "id": 132,
-    "nome": "123",
-    "preco": 123.0,
-    "estoque": 123,
-    "estoqueMIN": 123123,
+    "esporteRelacionado": "Patinação",
+    "itemEquipamento": "Patins",
+    "id": 1,
+    "nome": "Darkness Gold",
+    "preco": 399.99,
+    "estoque": 890,
+    "estoqueMIN": 213,
+    "tipoProduto": "Equipamento"
+  },
+  {
+    "esporteRelacionado": "Ciclismo",
+    "itemEquipamento": "Bicicleta",
+    "id": 2,
+    "nome": "Velox",
+    "preco": 829.99,
+    "estoque": 809,
+    "estoqueMIN": 187,
+    "tipoProduto": "Equipamento"
+  },
+  {
+    "esporteRelacionado": "Skate",
+    "itemEquipamento": "Shape",
+    "id": 3,
+    "nome": "Spin Street",
+    "preco": 209.99,
+    "estoque": 254,
+    "estoqueMIN": 87,
+    "tipoProduto": "Equipamento"
+  },
+  {
+    "esporteRelacionado": "Academia",
+    "itemEquipamento": "Bicicleta Ergonômica",
+    "id": 4,
+    "nome": "Kikos",
+    "preco": 3299.99,
+    "estoque": 142,
+    "estoqueMIN": 40,
+    "tipoProduto": "Equipamento"
+  },
+  {
+    "esporteRelacionado": "Boxe",
+    "itemEquipamento": "Saco de pancada",
+    "id": 5,
+    "nome": "Couro Punch",
+    "preco": 249.99,
+    "estoque": 50,
+    "estoqueMIN": 10,
     "tipoProduto": "Equipamento"
   }
 ]

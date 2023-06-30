@@ -385,15 +385,15 @@ public class produtosController {
     private TableView<ProdutoSuplemento> tabelaSuplemento;
     //#endregion
 
-    //#region Inicialização de todas as tabelas
-
+    //#region Persistência de dados com Json
     private JsonPersistenceAcessorio persistenceAcessorio;
     private JsonPersistenceCalcado persistenceCalcado;
     private JsonPersistenceEquipamento persistenceEquipamento;
     private JsonPersistenceRoupa persistenceRoupa;
     private JsonPersistenceSuplemento persistenceSuplemento;
+    //#endregion
 
-    
+    //#region Inicialização de todas as tabelas
     public void initialize() {
 
         //#region Mapeando clique para trocar de tela
@@ -403,18 +403,27 @@ public class produtosController {
             }
         });
 
-        tabProdutos.setOnSelectionChanged(event -> {
-            if (tabProdutos.isSelected()) {
-                App.mudarTela("produtos");
+        tabVendas.setOnSelectionChanged(event -> {
+            if (tabVendas.isSelected()) {
+                App.mudarTela("vendas");
             }
         });
+
+        tabRelatorios.setOnSelectionChanged(event -> {
+            if (tabRelatorios.isSelected()) {
+                App.mudarTela("relatorios");
+            }
+        });
+
         //#endregion
 
+        //#region criando Json's
         persistenceAcessorio = new JsonPersistenceAcessorio("dados_acessorios.json");
         persistenceCalcado = new JsonPersistenceCalcado("dados_calcados.json");
         persistenceEquipamento = new JsonPersistenceEquipamento("dados_equipamentos.json");
         persistenceRoupa = new JsonPersistenceRoupa("dados_roupas.json");
         persistenceSuplemento = new JsonPersistenceSuplemento("dados_suplementos.json");
+        //#endregion
 
         //#region tabela Acessorios
         idAcessorio.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
@@ -478,17 +487,21 @@ public class produtosController {
         saborSuplemento.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSaborSuplemento()));
         //#endregion
 
+        //#region Criando listas observáveis do JavaFX e carregando dados nelas
         ObservableList<ProdutoAcessorio> dadosAcessorios = FXCollections.observableArrayList(persistenceAcessorio.carregarDados());
         ObservableList<ProdutoCalcado> dadosCalcados = FXCollections.observableArrayList(persistenceCalcado.carregarDados());
         ObservableList<ProdutoEquipamento> dadosEquipamentos = FXCollections.observableArrayList(persistenceEquipamento.carregarDados());
         ObservableList<ProdutoRoupa> dadosRoupas = FXCollections.observableArrayList(persistenceRoupa.carregarDados());
         ObservableList<ProdutoSuplemento> dadosSuplementos = FXCollections.observableArrayList(persistenceSuplemento.carregarDados());
+        //#endregion
 
+        //#region Colocando valores nas tabelas
         tabelaAcessorio.setItems(dadosAcessorios);
         tabelaCalcado.setItems(dadosCalcados);
         tabelaEquipamento.setItems(dadosEquipamentos);
         tabelaRoupa.setItems(dadosRoupas);
         tabelaSuplemento.setItems(dadosSuplementos);
+        //#endregion
 
         //#region Colocar dados da linha selecionada nos campos de texto
 
@@ -639,6 +652,14 @@ public class produtosController {
                     return;
                 }
             }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
+            }
 
             ProdutoAcessorio acessorio = new ProdutoAcessorio();
             acessorio.setId(Integer.parseInt(textID.getText()));
@@ -673,6 +694,14 @@ public class produtosController {
                     alert.showAndWait();
                     return;
                 }
+            }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
             }
 
             ProdutoCalcado calcado = new ProdutoCalcado();
@@ -712,6 +741,14 @@ public class produtosController {
                     return;
                 }
             }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
+            }
 
             ProdutoEquipamento equipamento = new ProdutoEquipamento();
             equipamento.setId(Integer.parseInt(textID.getText()));
@@ -746,6 +783,14 @@ public class produtosController {
                     alert.showAndWait();
                     return;
                 }
+            }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
             }
 
             ProdutoRoupa roupa = new ProdutoRoupa();
@@ -783,6 +828,14 @@ public class produtosController {
                     alert.showAndWait();
                     return;
                 }
+            }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
             }
 
             ProdutoSuplemento suplemento = new ProdutoSuplemento();
@@ -940,8 +993,9 @@ public class produtosController {
     @FXML
     void editarCampoProduto(ActionEvent event) {
         if (menuTipoProduto.getText() == "Acessório") {
+            int idAntigo = tabelaAcessorio.getSelectionModel().getSelectedItem().getId();
             for (ProdutoAcessorio dados : tabelaAcessorio.getItems()) {
-                if (Integer.parseInt(textID.getText()) == dados.getId()) {
+                if (Integer.parseInt(textID.getText()) == dados.getId() && Integer.parseInt(textID.getText()) != idAntigo) {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Erro");
                     alert.setHeaderText("ID já existente");
@@ -949,6 +1003,14 @@ public class produtosController {
                     alert.showAndWait();
                     return;
                 }
+            }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
             }
 
             ProdutoAcessorio itemSelecionado = tabelaAcessorio.getSelectionModel().getSelectedItem();
@@ -982,8 +1044,9 @@ public class produtosController {
             }
         }
         else if (menuTipoProduto.getText() == "Calçado") {
+            int idAntigo = tabelaCalcado.getSelectionModel().getSelectedItem().getId();
             for (ProdutoCalcado dados : tabelaCalcado.getItems()) {
-                if (Integer.parseInt(textID.getText()) == dados.getId()) {
+                if (Integer.parseInt(textID.getText()) == dados.getId() && Integer.parseInt(textID.getText()) != idAntigo) {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Erro");
                     alert.setHeaderText("ID já existente");
@@ -991,6 +1054,14 @@ public class produtosController {
                     alert.showAndWait();
                     return;
                 }
+            }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
             }
 
             ProdutoCalcado itemSelecionado = tabelaCalcado.getSelectionModel().getSelectedItem();
@@ -1027,8 +1098,9 @@ public class produtosController {
             }
         }
         else if (menuTipoProduto.getText() == "Equipamento") {
+            int idAntigo = tabelaEquipamento.getSelectionModel().getSelectedItem().getId();
             for (ProdutoEquipamento dados : tabelaEquipamento.getItems()) {
-                if (Integer.parseInt(textID.getText()) == dados.getId()) {
+                if (Integer.parseInt(textID.getText()) == dados.getId() && Integer.parseInt(textID.getText()) != idAntigo) {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Erro");
                     alert.setHeaderText("ID já existente");
@@ -1036,6 +1108,14 @@ public class produtosController {
                     alert.showAndWait();
                     return;
                 }
+            }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
             }
             
             ProdutoEquipamento itemSelecionado = tabelaEquipamento.getSelectionModel().getSelectedItem();
@@ -1069,8 +1149,9 @@ public class produtosController {
             }
         }
         else if (menuTipoProduto.getText() == "Roupa"){
+            int idAntigo = tabelaRoupa.getSelectionModel().getSelectedItem().getId();
             for (ProdutoRoupa dados : tabelaRoupa.getItems()) {
-                if (Integer.parseInt(textID.getText()) == dados.getId()) {
+                if (Integer.parseInt(textID.getText()) == dados.getId() && Integer.parseInt(textID.getText()) != idAntigo) {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Erro");
                     alert.setHeaderText("ID já existente");
@@ -1078,6 +1159,14 @@ public class produtosController {
                     alert.showAndWait();
                     return;
                 }
+            }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
             }
 
             ProdutoRoupa itemSelecionado = tabelaRoupa.getSelectionModel().getSelectedItem();
@@ -1113,8 +1202,9 @@ public class produtosController {
             }
         }
         else if (menuTipoProduto.getText() == "Suplemento") {
+            int idAntigo = tabelaSuplemento.getSelectionModel().getSelectedItem().getId();
             for (ProdutoSuplemento dados : tabelaSuplemento.getItems()) {
-                if (Integer.parseInt(textID.getText()) == dados.getId()) {
+                if (Integer.parseInt(textID.getText()) == dados.getId() && Integer.parseInt(textID.getText()) != idAntigo) {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Erro");
                     alert.setHeaderText("ID já existente");
@@ -1122,6 +1212,14 @@ public class produtosController {
                     alert.showAndWait();
                     return;
                 }
+            }
+            if (Integer.parseInt(textEstoque.getText()) <= Integer.parseInt(textMinEstoque.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Estoque inválido");
+                alert.setContentText("O estoque não pode ser menor ou igual ao estoque mínimo");
+                alert.showAndWait();
+                return;
             }
 
             ProdutoSuplemento itemSelecionado = tabelaSuplemento.getSelectionModel().getSelectedItem();

@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nome": "Lucas",
+    "email": "lucas@gmail.com",
+    "telefone": "(87)98271-1232",
+    "endereco": "Av. Jose Carvalho"
+  },
+  {
+    "id": 2,
+    "nome": "Jose",
+    "email": "jose@gmail.com",
+    "telefone": "(81)94512-1243",
+    "endereco": "Rua dos Alpineiros"
+  },
+  {
+    "id": 3,
+    "nome": "Maria",
+    "email": "maria@gmail.com",
+    "telefone": "(91)97645-0812",
+    "endereco": "Av. Santo Carlos"
+  },
+  {
+    "id": 4,
+    "nome": "Thamires",
+    "email": "thamires@gmail.com",
+    "telefone": "(82)96521-8734",
+    "endereco": "Rua Riacho Perdido"
+  },
+  {
+    "id": 5,
+    "nome": "Louise",
+    "email": "louise@gmail.com",
+    "telefone": "(87)99165-1062",
+    "endereco": "Av. Fransciso Pessoa"
+  }
+]

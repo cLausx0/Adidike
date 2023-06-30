@@ -44,7 +44,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <TabPane blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.produtosController">
   <tabs>
@@ -318,8 +320,54 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab fx:id="tabClientes" text="Clientes" />
-      <Tab fx:id="tabVendas" text="Vendas" />
-      <Tab fx:id="tabRelatorios" text="Relatórios" />
+    <Tab fx:id="tabClientes" text="Clientes">
+         <content>
+            <Line endX="100.0" startX="-100.0" />
+         </content>
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Line endX="-124.0" endY="-127.0" layoutX="160.0" layoutY="136.0" startX="-124.0" startY="-96.423828125" stroke="#1b41a8" strokeWidth="2.0" />
+                  <Text fill="#1b41a8" layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, clique novamente para trocar de tela...">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-171.5" endY="-170.5" layoutX="208.0" layoutY="179.0" startX="-161.0" startY="-158.0" stroke="#1b41a8" strokeWidth="2.0" />
+                  <Line endX="-155.0" endY="-167.0" layoutX="180.0" layoutY="188.0" startX="-144.5" startY="-179.5" stroke="#1b41a8" strokeWidth="2.0" />
+               </children>
+            </AnchorPane>
+         </content>
+    </Tab>
+      <Tab fx:id="tabVendas" text="Vendas">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Line endX="-124.0" endY="-127.0" layoutX="160.0" layoutY="136.0" startX="-124.0" startY="-96.423828125" stroke="#1b41a8" strokeWidth="2.0" />
+                  <Text fill="#1b41a8" layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, clique novamente para trocar de tela...">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-171.5" endY="-170.5" layoutX="208.0" layoutY="179.0" startX="-161.0" startY="-158.0" stroke="#1b41a8" strokeWidth="2.0" />
+                  <Line endX="-155.0" endY="-167.0" layoutX="180.0" layoutY="188.0" startX="-144.5" startY="-179.5" stroke="#1b41a8" strokeWidth="2.0" />
+               </children>
+            </AnchorPane>
+         </content></Tab>
+      <Tab fx:id="tabRelatorios" text="Relatórios">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Line endX="-124.0" endY="-127.0" layoutX="160.0" layoutY="136.0" startX="-124.0" startY="-96.423828125" stroke="#1b41a8" strokeWidth="2.0" />
+                  <Text fill="#1b41a8" layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, clique novamente para trocar de tela...">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                  <Line endX="-171.5" endY="-170.5" layoutX="208.0" layoutY="179.0" startX="-161.0" startY="-158.0" stroke="#1b41a8" strokeWidth="2.0" />
+                  <Line endX="-155.0" endY="-167.0" layoutX="180.0" layoutY="188.0" startX="-144.5" startY="-179.5" stroke="#1b41a8" strokeWidth="2.0" />
+               </children>
+            </AnchorPane>
+         </content></Tab>
   </tabs>
 </TabPane>

@@ -1,14 +1,62 @@
 [
   {
-    "consistenciaSuplemento": "123",
-    "caloriasSuplemento": 123,
-    "gramasSuplemento": 123.0,
-    "saborSuplemento": "123",
-    "id": 123,
-    "nome": "123",
-    "preco": 132.0,
-    "estoque": 123,
-    "estoqueMIN": 123,
+    "consistenciaSuplemento": "Tablets",
+    "caloriasSuplemento": 10,
+    "gramasSuplemento": 40.0,
+    "saborSuplemento": "Café",
+    "id": 1,
+    "nome": "Thermo Flame",
+    "preco": 29.9,
+    "estoque": 320,
+    "estoqueMIN": 78,
+    "tipoProduto": "Suplemento"
+  },
+  {
+    "consistenciaSuplemento": "Pó",
+    "caloriasSuplemento": 20,
+    "gramasSuplemento": 300.0,
+    "saborSuplemento": "Neutro",
+    "id": 2,
+    "nome": "Creatine Turbo",
+    "preco": 100.0,
+    "estoque": 78,
+    "estoqueMIN": 20,
+    "tipoProduto": "Suplemento"
+  },
+  {
+    "consistenciaSuplemento": "Pó",
+    "caloriasSuplemento": 9,
+    "gramasSuplemento": 900.0,
+    "saborSuplemento": "Chocolate",
+    "id": 3,
+    "nome": "Whey Pure",
+    "preco": 157.1,
+    "estoque": 421,
+    "estoqueMIN": 90,
+    "tipoProduto": "Suplemento"
+  },
+  {
+    "consistenciaSuplemento": "Capsula",
+    "caloriasSuplemento": 20,
+    "gramasSuplemento": 300.0,
+    "saborSuplemento": "Maçã verde",
+    "id": 4,
+    "nome": "Diabo Verde",
+    "preco": 83.7,
+    "estoque": 99,
+    "estoqueMIN": 10,
+    "tipoProduto": "Suplemento"
+  },
+  {
+    "consistenciaSuplemento": "Capsula",
+    "caloriasSuplemento": 40,
+    "gramasSuplemento": 125.0,
+    "saborSuplemento": "Neutro",
+    "id": 5,
+    "nome": "BCAA",
+    "preco": 34.9,
+    "estoque": 230,
+    "estoqueMIN": 100,
     "tipoProduto": "Suplemento"
   }
 ]

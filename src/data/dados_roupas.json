@@ -1,14 +1,62 @@
 [
   {
-    "tamanho": "123",
-    "cor": "123",
-    "marca": "123",
-    "material": "123",
-    "id": 1232,
-    "nome": "123",
-    "preco": 123.0,
-    "estoque": 123,
-    "estoqueMIN": 123,
+    "tamanho": "P",
+    "cor": "Azul",
+    "marca": "Adidas",
+    "material": "Poliéster",
+    "id": 1,
+    "nome": "Squadria 21",
+    "preco": 99.99,
+    "estoque": 76,
+    "estoqueMIN": 12,
+    "tipoProduto": "Roupa"
+  },
+  {
+    "tamanho": "M",
+    "cor": "Vermelha",
+    "marca": "Adidas",
+    "material": "Poliéster",
+    "id": 2,
+    "nome": "Regata Flamengo",
+    "preco": 229.99,
+    "estoque": 831,
+    "estoqueMIN": 100,
+    "tipoProduto": "Roupa"
+  },
+  {
+    "tamanho": "G",
+    "cor": "Azul",
+    "marca": "UEFA",
+    "material": "Algodão",
+    "id": 3,
+    "nome": "Moletom UCL",
+    "preco": 199.99,
+    "estoque": 321,
+    "estoqueMIN": 90,
+    "tipoProduto": "Roupa"
+  },
+  {
+    "tamanho": "M",
+    "cor": "Preta",
+    "marca": "Oxer",
+    "material": "Poliéster",
+    "id": 4,
+    "nome": "Mark BS 2",
+    "preco": 69.99,
+    "estoque": 120,
+    "estoqueMIN": 30,
+    "tipoProduto": "Roupa"
+  },
+  {
+    "tamanho": "PP",
+    "cor": "Azul",
+    "marca": "Puma",
+    "material": "Algodão",
+    "id": 5,
+    "nome": "Meia Cano Médio",
+    "preco": 44.99,
+    "estoque": 421,
+    "estoqueMIN": 78,
     "tipoProduto": "Roupa"
   }
 ]
